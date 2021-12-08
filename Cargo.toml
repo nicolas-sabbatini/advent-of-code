@@ -31,3 +31,11 @@ path = "src/day-03-a.rs"
 name = "03b"
 path = "src/day-03-b.rs"
 
+[[bin]]
+name = "04a"
+path = "src/day-04-a.rs"
+
+[[bin]]
+name = "04b"
+path = "src/day-04-b.rs"
+
