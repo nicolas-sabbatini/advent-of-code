@@ -3,8 +3,6 @@ name = "advent-of-code-2021"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 
 [[bin]]
@@ -38,4 +36,12 @@ path = "src/day-04-a.rs"
 [[bin]]
 name = "04b"
 path = "src/day-04-b.rs"
+
+[[bin]]
+name = "05a"
+path = "src/day-05-a.rs"
+
+[[bin]]
+name = "05b"
+path = "src/day-05-b.rs"
 
