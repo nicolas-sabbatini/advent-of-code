@@ -6,6 +6,10 @@ edition = "2021"
 [dependencies]
 
 [[bin]]
+name = "base"
+path = "src/base.rs"
+
+[[bin]]
 name = "01a"
 path = "src/day-01-a.rs"
 
@@ -61,3 +65,10 @@ path = "src/day-07-a.rs"
 name = "07b"
 path = "src/day-07-b.rs"
 
+[[bin]]
+name = "08a"
+path = "src/day-08-a.rs"
+
+[[bin]]
+name = "08b"
+path = "src/day-08-b.rs"
