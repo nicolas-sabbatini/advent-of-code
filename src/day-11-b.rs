@@ -22,7 +22,6 @@ fn main() {
     let row = octopus[0].len() - 1;
     let amount_octo = (col + 1) * (row + 1);
     // Simulate the steps
-    let mut flashes = 0;
     let mut step = 0;
     loop {
         step += 1;
@@ -43,7 +42,6 @@ fn main() {
                 None => break,
                 Some((x, y)) => {
                     if !flash_already[y][x] {
-                        flashes += 1;
                         flash_already[y][x] = true;
                         for offset_y in -1..=1 {
                             for offset_x in -1..=1 {
