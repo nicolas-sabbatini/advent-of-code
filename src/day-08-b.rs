@@ -10,8 +10,8 @@ fn main() {
     // Parce input
     for line in input.iter() {
         let mut input = line.split(" | ");
-        let unique_patterns = input.next().unwrap().split(" ").collect::<Vec<&str>>();
-        let ouput = input.next().unwrap().split(" ").collect::<Vec<&str>>();
+        let unique_patterns = input.next().unwrap().split(' ').collect::<Vec<&str>>();
+        let ouput = input.next().unwrap().split(' ').collect::<Vec<&str>>();
         signals.push((unique_patterns, ouput));
     }
     // Get a decode pattern
