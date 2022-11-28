@@ -25,8 +25,6 @@ fn main() {
         if current < next {
             res += 1;
         }
-
-        println!("{} {}", current, next);
     }
     // Print result
     println!("{}", res);
