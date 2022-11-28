@@ -7,7 +7,7 @@ fn main() {
     let input = load_input();
     let mut crab_positions = Vec::new();
     // Parse crab positions
-    for num in input[0].split(",") {
+    for num in input[0].split(',') {
         let num = num.parse::<isize>().unwrap();
         crab_positions.push(num);
     }
