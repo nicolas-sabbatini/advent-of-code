@@ -11,8 +11,8 @@ fn main() {
     // Generate list of coordinates
     for line in input.iter() {
         let mut coordinates = line.split(" -> ");
-        let mut coor1 = coordinates.next().unwrap().split(",");
-        let mut coor2 = coordinates.next().unwrap().split(",");
+        let mut coor1 = coordinates.next().unwrap().split(',');
+        let mut coor2 = coordinates.next().unwrap().split(',');
         let pair1 = (
             coor1.next().unwrap().parse::<usize>().unwrap(),
             coor1.next().unwrap().parse::<usize>().unwrap(),
@@ -23,7 +23,7 @@ fn main() {
         );
         if pair1.0 == pair2.0 || pair1.1 == pair2.1 {
             for point in draw_line(pair1, pair2).iter() {
-                match map.get_mut(&point) {
+                match map.get_mut(point) {
                     Some(point) => *point += 1,
                     None => {
                         map.insert(*point, 1);
