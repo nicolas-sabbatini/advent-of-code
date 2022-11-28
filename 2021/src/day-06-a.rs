@@ -6,7 +6,7 @@ fn main() {
     // Load input
     let input = load_input();
     let mut fish_days = [0; 10];
-    for num in input[0].split(",") {
+    for num in input[0].split(',') {
         let num = num.parse::<usize>().unwrap();
         fish_days[num] += 1;
     }
@@ -23,5 +23,5 @@ fn main() {
         }
     }
 
-    println!("{}", fish_days.iter().fold(0, |sum, x| sum + x));
+    println!("{}", fish_days.iter().sum::<i32>());
 }
