@@ -9,7 +9,7 @@ fn main() {
     let mut aperences = 0;
     for line in input.iter() {
         let mut check = false;
-        for wires in line.split(" ") {
+        for wires in line.split(' ') {
             match wires {
                 "|" => check = true,
                 _ => {
