@@ -40,8 +40,8 @@ fn main() {
     basins_sizes.sort_by(|a, b| b.cmp(a));
     // Calculate res
     let mut res = 1;
-    for i in 0..3 {
-        res *= basins_sizes[i];
+    for basin in &basins_sizes[0..3] {
+        res *= basin;
     }
     println!("{}", res);
 }
@@ -56,10 +56,10 @@ fn calculate_basins(x: isize, y: isize, map: &Vec<Vec<u8>>, map_vis: &mut Vec<Ve
     {
         map_vis[y as usize][x as usize] = true;
         return 1
-            + calculate_basins(x - 1, y, &map, map_vis)
-            + calculate_basins(x + 1, y, &map, map_vis)
-            + calculate_basins(x, y - 1, &map, map_vis)
-            + calculate_basins(x, y + 1, &map, map_vis);
+            + calculate_basins(x - 1, y, map, map_vis)
+            + calculate_basins(x + 1, y, map, map_vis)
+            + calculate_basins(x, y - 1, map, map_vis)
+            + calculate_basins(x, y + 1, map, map_vis);
     }
     0
 }
