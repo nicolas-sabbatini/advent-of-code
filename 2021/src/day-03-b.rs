@@ -33,7 +33,7 @@ enum FilterMode {
 }
 
 fn filter_til_one(
-    input: &Vec<String>,
+    input: &[String],
     mut indexs: Vec<usize>,
     size: usize,
     mode: FilterMode,
