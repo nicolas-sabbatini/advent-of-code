@@ -4,26 +4,16 @@ mod helpers;
 
 #[derive(Debug)]
 enum Outcome {
-    Won,
-    Draw,
-    Lost,
+    Lost = 0,
+    Draw = 3,
+    Won = 6,
 }
 
-impl Outcome {
-    fn to_usize(&self) -> usize {
-        match self {
-            Outcome::Won => 6,
-            Outcome::Draw => 3,
-            Outcome::Lost => 0,
-        }
-    }
-}
-
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 enum RPS {
-    Rock,
-    Paper,
-    Scissors,
+    Rock = 1,
+    Paper = 2,
+    Scissors = 3,
 }
 
 impl From<&str> for RPS {
@@ -38,22 +28,14 @@ impl From<&str> for RPS {
 }
 
 impl RPS {
-    fn to_usize(&self) -> usize {
-        match self {
-            RPS::Rock => 1,
-            RPS::Paper => 2,
-            RPS::Scissors => 3,
-        }
-    }
-
     fn chaleng(&self, opponent: &RPS) -> Outcome {
-        match (self, opponent) {
-            (RPS::Rock, RPS::Paper) | (RPS::Paper, RPS::Scissors) | (RPS::Scissors, RPS::Rock) => {
-                Outcome::Lost
-            }
-            (s, o) if s == o => Outcome::Draw,
-            _ => Outcome::Won,
+        if self == opponent {
+            return Outcome::Draw;
         }
+        if ((*self as usize - 1 + 2) % 3) + 1 == *opponent as usize {
+            return Outcome::Won;
+        }
+        Outcome::Lost
     }
 }
 
@@ -66,7 +48,7 @@ fn main() {
         let opponent_play = RPS::from(selection.next().unwrap());
         let my_play = RPS::from(selection.next().unwrap());
         let outcome = my_play.chaleng(&opponent_play);
-        score = score + my_play.to_usize() + outcome.to_usize();
+        score = score + my_play as usize + outcome as usize;
     }
     println!("{:?}", score);
 }
