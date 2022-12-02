@@ -18,5 +18,5 @@ fn main() {
         elf_calories[last_elf] += calories;
     }
     elf_calories.sort();
-    println!("{:?}", elf_calories[last_elf]);
+    println!("{:?}", elf_calories.iter().last().unwrap());
 }
