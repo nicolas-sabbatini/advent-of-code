@@ -33,27 +33,34 @@ impl From<&str> for RPS {
             "A" => RPS::Rock,
             "B" => RPS::Paper,
             "C" => RPS::Scissors,
-            _ => panic!("unknown simbol"),
+            _ => panic!("unknown symbol"),
         }
     }
 }
 
-impl From<usize> for RPS {
-    fn from(input: usize) -> RPS {
-        match input {
-            1 => RPS::Rock,
-            2 => RPS::Paper,
-            3 => RPS::Scissors,
-            _ => panic!("unknown simbol"),
+impl RPS {
+    fn get_defeated_symbol(&self) -> RPS {
+        match self {
+            RPS::Rock => RPS::Scissors,
+            RPS::Paper => RPS::Rock,
+            RPS::Scissors => RPS::Paper,
+        }
+    }
+
+    fn get_winner_symbol(&self) -> RPS {
+        match self {
+            RPS::Scissors => RPS::Rock,
+            RPS::Rock => RPS::Paper,
+            RPS::Paper => RPS::Scissors,
         }
     }
 }
 
-fn select_correct_play(opponent_play: &RPS, desire_outcome: &Outcome) -> RPS {
+fn select_desired_play(opponent_play: &RPS, desire_outcome: &Outcome) -> RPS {
     match desire_outcome {
-        Outcome::Lost => RPS::from(((*opponent_play as usize - 1 + 2) % 3) + 1),
+        Outcome::Lost => opponent_play.get_defeated_symbol(),
         Outcome::Draw => *opponent_play,
-        Outcome::Won => RPS::from(((*opponent_play as usize - 1 + 1) % 3) + 1),
+        Outcome::Won => opponent_play.get_winner_symbol(),
     }
 }
 
@@ -65,7 +72,7 @@ fn main() {
         let mut selection = lines.split(' ');
         let opponent_play = RPS::from(selection.next().unwrap());
         let desire_outcome = Outcome::from(selection.next().unwrap());
-        let my_play = select_correct_play(&opponent_play, &desire_outcome);
+        let my_play = select_desired_play(&opponent_play, &desire_outcome);
         score = score + my_play as usize + desire_outcome as usize;
     }
     println!("{:?}", score);

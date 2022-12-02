@@ -9,7 +9,7 @@ enum Outcome {
     Won = 6,
 }
 
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq)]
 enum RPS {
     Rock = 1,
     Paper = 2,
@@ -22,20 +22,28 @@ impl From<&str> for RPS {
             "A" | "X" => RPS::Rock,
             "B" | "Y" => RPS::Paper,
             "C" | "Z" => RPS::Scissors,
-            _ => panic!("unknown simbol"),
+            _ => panic!("unknown symbol"),
         }
     }
 }
 
 impl RPS {
-    fn chaleng(&self, opponent: &RPS) -> Outcome {
+    fn challenge(&self, opponent: &RPS) -> Outcome {
         if self == opponent {
             return Outcome::Draw;
         }
-        if ((*self as usize - 1 + 2) % 3) + 1 == *opponent as usize {
+        if self.get_defeated_symbol() == *opponent {
             return Outcome::Won;
         }
         Outcome::Lost
+    }
+
+    fn get_defeated_symbol(&self) -> RPS {
+        match self {
+            RPS::Rock => RPS::Scissors,
+            RPS::Paper => RPS::Rock,
+            RPS::Scissors => RPS::Paper,
+        }
     }
 }
 
@@ -47,7 +55,7 @@ fn main() {
         let mut selection = lines.split(' ');
         let opponent_play = RPS::from(selection.next().unwrap());
         let my_play = RPS::from(selection.next().unwrap());
-        let outcome = my_play.chaleng(&opponent_play);
+        let outcome = my_play.challenge(&opponent_play);
         score = score + my_play as usize + outcome as usize;
     }
     println!("{:?}", score);
