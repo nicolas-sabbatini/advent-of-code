@@ -5,6 +5,9 @@ version = 3
 [[package]]
 name = "advent-of-code-2015"
 version = "0.1.0"
+dependencies = [
+ "input_loader",
+]
 
 [[package]]
 name = "advent-of-code-2021"
@@ -12,4 +15,8 @@ version = "0.1.0"
 
 [[package]]
 name = "advent-of-code-2022"
+version = "0.1.0"
+
+[[package]]
+name = "input_loader"
 version = "0.1.0"

@@ -3,6 +3,13 @@ name = "advent-of-code-2015"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+input_loader = { path = "../input_loader" }
+
+[[bin]]
+name = "2015-01a"
+path = "src/01a.rs"
+
+[[bin]]
+name = "2015-01b"
+path = "src/01b.rs"

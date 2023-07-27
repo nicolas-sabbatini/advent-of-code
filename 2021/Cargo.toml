@@ -10,121 +10,121 @@ name = "base"
 path = "src/base.rs"
 
 [[bin]]
-name = "01a"
+name = "2021-01a"
 path = "src/day-01-a.rs"
 
 [[bin]]
-name = "01b"
+name = "2021-01b"
 path = "src/day-01-b.rs"
 
 [[bin]]
-name = "02a"
+name = "2021-02a"
 path = "src/day-02-a.rs"
 
 [[bin]]
-name = "02b"
+name = "2021-02b"
 path = "src/day-02-b.rs"
 
 [[bin]]
-name = "03a"
+name = "2021-03a"
 path = "src/day-03-a.rs"
 
 [[bin]]
-name = "03b"
+name = "2021-03b"
 path = "src/day-03-b.rs"
 
 [[bin]]
-name = "04a"
+name = "2021-04a"
 path = "src/day-04-a.rs"
 
 [[bin]]
-name = "04b"
+name = "2021-04b"
 path = "src/day-04-b.rs"
 
 [[bin]]
-name = "05a"
+name = "2021-05a"
 path = "src/day-05-a.rs"
 
 [[bin]]
-name = "05b"
+name = "2021-05b"
 path = "src/day-05-b.rs"
 
 [[bin]]
-name = "06a"
+name = "2021-06a"
 path = "src/day-06-a.rs"
 
 [[bin]]
-name = "06b"
+name = "2021-06b"
 path = "src/day-06-b.rs"
 
 [[bin]]
-name = "07a"
+name = "2021-07a"
 path = "src/day-07-a.rs"
 
 [[bin]]
-name = "07b"
+name = "2021-07b"
 path = "src/day-07-b.rs"
 
 [[bin]]
-name = "08a"
+name = "2021-08a"
 path = "src/day-08-a.rs"
 
 [[bin]]
-name = "08b"
+name = "2021-08b"
 path = "src/day-08-b.rs"
 
 [[bin]]
-name = "09a"
+name = "2021-09a"
 path = "src/day-09-a.rs"
 
 [[bin]]
-name = "09b"
+name = "2021-09b"
 path = "src/day-09-b.rs"
 
 [[bin]]
-name = "10a"
+name = "2021-10a"
 path = "src/day-10-a.rs"
 
 [[bin]]
-name = "10b"
+name = "2021-10b"
 path = "src/day-10-b.rs"
 
 [[bin]]
-name = "11a"
+name = "2021-11a"
 path = "src/day-11-a.rs"
 
 [[bin]]
-name = "11b"
+name = "2021-11b"
 path = "src/day-11-b.rs"
 
 [[bin]]
-name = "12a"
+name = "2021-12a"
 path = "src/day-12-a.rs"
 
 [[bin]]
-name = "12b"
+name = "2021-12b"
 path = "src/day-12-b.rs"
 
 [[bin]]
-name = "13a"
+name = "2021-13a"
 path = "src/day-13-a.rs"
 
 [[bin]]
-name = "13b"
+name = "2021-13b"
 path = "src/day-13-b.rs"
 
 [[bin]]
-name = "14a"
+name = "2021-14a"
 path = "src/day-14-a.rs"
 
 [[bin]]
-name = "14b"
+name = "2021-14b"
 path = "src/day-14-b.rs"
 
 [[bin]]
-name = "15a"
+name = "2021-15a"
 path = "src/day-15-a.rs"
 
 [[bin]]
-name = "15b"
+name = "2021-15b"
 path = "src/day-15-b.rs"
