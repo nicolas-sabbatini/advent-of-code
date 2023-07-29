@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 input_loader = { path = "../input_loader" }
+md5 = "0.7.0"
 
 [[bin]]
 name = "2015-01a"
@@ -29,3 +30,11 @@ path = "src/03a.rs"
 [[bin]]
 name = "2015-03b"
 path = "src/03b.rs"
+
+[[bin]]
+name = "2015-04a"
+path = "src/04a.rs"
+
+[[bin]]
+name = "2015-04b"
+path = "src/04b.rs"
