@@ -70,3 +70,11 @@ path = "src/08a.rs"
 [[bin]]
 name = "2015-08b"
 path = "src/08b.rs"
+
+[[bin]]
+name = "2015-09a"
+path = "src/09a.rs"
+
+[[bin]]
+name = "2015-09b"
+path = "src/09b.rs"
