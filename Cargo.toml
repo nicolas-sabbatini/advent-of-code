@@ -1,8 +1,4 @@
 [workspace]
+resolver = "2"
 
-members = [
-    "2015",
-    "2021",
-    "2022",
-    "input_loader",
-]
+members = ["2015", "2021", "2022", "input_loader"]
