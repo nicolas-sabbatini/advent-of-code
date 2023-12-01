@@ -2,7 +2,7 @@ use helpers::load_input;
 
 mod helpers;
 
-fn fully_contains(first_range: Vec<usize>, second_range: Vec<usize>) -> bool {
+fn fully_contains(first_range: &[usize], second_range: &[usize]) -> bool {
     if (first_range[0] <= second_range[0] && first_range[1] >= second_range[1])
         || (first_range[0] >= second_range[0] && first_range[1] <= second_range[1])
     {
@@ -25,8 +25,8 @@ fn main() {
             .split('-')
             .map(|ch| ch.parse::<usize>().unwrap())
             .collect::<Vec<usize>>();
-        if fully_contains(first_range, second_range) {
-            overlap_ranges += 1
+        if fully_contains(&first_range, &second_range) {
+            overlap_ranges += 1;
         }
     }
     println!("{overlap_ranges}");

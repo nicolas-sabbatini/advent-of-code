@@ -26,5 +26,5 @@ fn main() {
         }
         i += 1;
     }
-    println!("{:?}", i);
+    println!("{i:?}");
 }

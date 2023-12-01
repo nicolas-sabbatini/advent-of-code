@@ -48,7 +48,7 @@ fn main() {
             }
             "toggle" => {
                 let (x1, y1, x2, y2) = parse_cords(&mut words);
-                turn(&mut grid, x1, y1, x2, y2, 2)
+                turn(&mut grid, x1, y1, x2, y2, 2);
             }
             _ => panic!("Invalid command"),
         }

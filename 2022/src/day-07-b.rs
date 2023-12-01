@@ -2,8 +2,8 @@ use helpers::load_input;
 
 mod helpers;
 
-const FILE_SYSTEM_SIZE: usize = 70000000;
-const FILE_SYSTEM_FREE_SPACE_NEED: usize = 30000000;
+const FILE_SYSTEM_SIZE: usize = 70_000_000;
+const FILE_SYSTEM_FREE_SPACE_NEED: usize = 30_000_000;
 
 #[derive(Debug)]
 struct File {
@@ -65,11 +65,11 @@ fn main() {
     let home = Dir::new("/", None);
     let mut disk = Disk(vec![home]);
     let mut current_dir = 0;
-    for line in input[1..].iter() {
+    for line in &input[1..] {
         let line = line.split(' ').collect::<Vec<&str>>();
         if line[0] == "$" {
             if line[1] == "cd" {
-                match line[2] {
+                match *line.get(2).unwrap() {
                     ".." => {
                         current_dir = disk.0[current_dir].parent.unwrap();
                     }
@@ -83,7 +83,7 @@ fn main() {
                                 }
                                 false
                             })
-                            .unwrap()
+                            .unwrap();
                     }
                 }
             }

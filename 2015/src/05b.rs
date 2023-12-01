@@ -15,7 +15,7 @@ fn main() {
                 repeat_one_letter_before = true;
             }
             char_test = previous_char.clone();
-            let pair = format!("{}{}", previous_char, char);
+            let pair = format!("{previous_char}{char}");
             let pair_len = pairs.len();
             if pair_len > 1 && pairs[0..(pair_len - 1)].contains(&pair) && !pair_repeat {
                 pair_repeat = true;

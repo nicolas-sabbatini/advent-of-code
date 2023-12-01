@@ -54,7 +54,7 @@ fn main() {
                 Err(_) => Operation::AssignWire(parce_line[0].to_string()),
             },
             4 => Operation::Not(parce_line[1].to_string()),
-            5 => match parce_line[1] {
+            5 => match *parce_line.get(1).unwrap() {
                 "AND" => match parce_line[0].parse::<u16>() {
                     Ok(a) => Operation::AndAsing(a, parce_line[2].to_string()),
                     Err(_) => Operation::And(parce_line[0].to_string(), parce_line[2].to_string()),

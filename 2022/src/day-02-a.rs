@@ -10,25 +10,25 @@ enum Outcome {
 }
 
 #[derive(Debug, PartialEq)]
-enum RPS {
+enum Rps {
     Rock = 1,
     Paper = 2,
     Scissors = 3,
 }
 
-impl From<&str> for RPS {
+impl From<&str> for Rps {
     fn from(ch: &str) -> Self {
         match ch {
-            "A" | "X" => RPS::Rock,
-            "B" | "Y" => RPS::Paper,
-            "C" | "Z" => RPS::Scissors,
+            "A" | "X" => Rps::Rock,
+            "B" | "Y" => Rps::Paper,
+            "C" | "Z" => Rps::Scissors,
             _ => panic!("unknown symbol"),
         }
     }
 }
 
-impl RPS {
-    fn challenge(&self, opponent: &RPS) -> Outcome {
+impl Rps {
+    fn challenge(&self, opponent: &Rps) -> Outcome {
         if self == opponent {
             return Outcome::Draw;
         }
@@ -38,11 +38,11 @@ impl RPS {
         Outcome::Lost
     }
 
-    fn get_defeated_symbol(&self) -> RPS {
+    fn get_defeated_symbol(&self) -> Rps {
         match self {
-            RPS::Rock => RPS::Scissors,
-            RPS::Paper => RPS::Rock,
-            RPS::Scissors => RPS::Paper,
+            Rps::Rock => Rps::Scissors,
+            Rps::Paper => Rps::Rock,
+            Rps::Scissors => Rps::Paper,
         }
     }
 }
@@ -53,10 +53,10 @@ fn main() {
     let mut score: usize = 0;
     for lines in input {
         let mut selection = lines.split(' ');
-        let opponent_play = RPS::from(selection.next().unwrap());
-        let my_play = RPS::from(selection.next().unwrap());
+        let opponent_play = Rps::from(selection.next().unwrap());
+        let my_play = Rps::from(selection.next().unwrap());
         let outcome = my_play.challenge(&opponent_play);
         score = score + my_play as usize + outcome as usize;
     }
-    println!("{:?}", score);
+    println!("{score:?}");
 }

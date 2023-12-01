@@ -12,10 +12,10 @@ struct Node {
 fn main() {
     // Load input
     let input = load_input();
-    println!("{:?}", input);
+    println!("{input:?}");
     // Parce inputs
     let mut map: Vec<Vec<usize>> = Vec::new();
-    for line in input.iter() {
+    for line in &input {
         map.push(Vec::new());
         let row = map.len() - 1;
         for num in line.chars() {

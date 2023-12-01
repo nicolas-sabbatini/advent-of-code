@@ -5,7 +5,7 @@ mod helpers;
 const UPPERCASE_OFFSET: usize = 38;
 const LOWERCASE_OFFSET: usize = 96;
 
-fn find_match_objet(a_compartment: Vec<char>, b_compartment: Vec<char>) -> Vec<char> {
+fn find_match_objet(a_compartment: &[char], b_compartment: &[char]) -> Vec<char> {
     let mut a_i = 0;
     let mut b_i = 0;
     let mut matching_objets: Vec<char> = Vec::new();
@@ -23,11 +23,11 @@ fn find_match_objet(a_compartment: Vec<char>, b_compartment: Vec<char>) -> Vec<c
     matching_objets
 }
 
-fn objet_to_priority(objet: &char) -> usize {
-    if *objet < 'a' {
-        return *objet as usize - UPPERCASE_OFFSET;
+fn objet_to_priority(objet: char) -> usize {
+    if objet < 'a' {
+        return objet as usize - UPPERCASE_OFFSET;
     }
-    *objet as usize - LOWERCASE_OFFSET
+    objet as usize - LOWERCASE_OFFSET
 }
 
 fn main() {
@@ -37,11 +37,14 @@ fn main() {
         let objets = line.chars().collect::<Vec<char>>();
         let mut first_compartment: Vec<char> = objets[0..objets.len() / 2].to_vec();
         let mut second_compartment: Vec<char> = objets[objets.len() / 2..].to_vec();
-        first_compartment.sort();
-        second_compartment.sort();
-        let matching_objets = find_match_objet(first_compartment, second_compartment);
-        let priority = matching_objets.iter().map(objet_to_priority).sum::<usize>();
+        first_compartment.sort_unstable();
+        second_compartment.sort_unstable();
+        let matching_objets = find_match_objet(&first_compartment, &second_compartment);
+        let priority = matching_objets
+            .iter()
+            .map(|c| objet_to_priority(*c))
+            .sum::<usize>();
         res += priority;
     }
-    println!("{:?}", res);
+    println!("{res:?}");
 }

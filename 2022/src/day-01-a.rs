@@ -17,6 +17,6 @@ fn main() {
         let calories = line.parse::<usize>().unwrap();
         elf_calories[last_elf] += calories;
     }
-    elf_calories.sort();
+    elf_calories.sort_unstable();
     println!("{:?}", elf_calories.iter().last().unwrap());
 }

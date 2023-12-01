@@ -62,11 +62,11 @@ fn main() {
     let home = Dir::new("/", None);
     let mut disk = Disk(vec![home]);
     let mut current_dir = 0;
-    for line in input[1..].iter() {
+    for line in &input[1..] {
         let line = line.split(' ').collect::<Vec<&str>>();
         if line[0] == "$" {
             if line[1] == "cd" {
-                match line[2] {
+                match *line.get(2).unwrap() {
                     ".." => {
                         current_dir = disk.0[current_dir].parent.unwrap();
                     }
@@ -80,7 +80,7 @@ fn main() {
                                 }
                                 false
                             })
-                            .unwrap()
+                            .unwrap();
                     }
                 }
             }
@@ -100,7 +100,7 @@ fn main() {
     let res = disk
         .0
         .iter()
-        .filter(|dir| dir.size < 100000)
+        .filter(|dir| dir.size < 100_000)
         .fold(0, |mut sum, file| {
             sum += file.size;
             sum

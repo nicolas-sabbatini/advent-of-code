@@ -7,8 +7,8 @@ fn main() {
     // Load input
     let input = load_input();
     let mut graph: HashMap<&str, Vec<&str>> = HashMap::new();
-    for line in input.iter() {
-        let mut edge = line.split("-");
+    for line in &input {
+        let mut edge = line.split('-');
         let vertx1 = edge.next().unwrap();
         let vertx2 = edge.next().unwrap();
         add_edge(vertx1, vertx2, &mut graph);
@@ -19,8 +19,8 @@ fn main() {
     loop {
         let curren = need_to_add.pop().expect("Error!");
         let neighbors = graph.get(&paths_buildier[curren].0).expect("Error!");
-        for n in neighbors.iter() {
-            if n.to_string().chars().all(|c| c.is_uppercase()) {
+        for n in neighbors {
+            if (*n).to_string().chars().all(char::is_uppercase) {
                 paths_buildier.push((n, curren));
                 need_to_add.push(paths_buildier.len() - 1);
             } else if *n == "end" {
@@ -33,7 +33,7 @@ fn main() {
                 }
             }
         }
-        if need_to_add.len() <= 0 {
+        if need_to_add.is_empty() {
             break;
         }
     }
@@ -59,7 +59,7 @@ fn add_edge<'a>(v1: &'a str, v2: &'a str, g: &mut HashMap<&'a str, Vec<&'a str>>
     }
 }
 
-fn build_path<'a>(p: &Vec<(&'a str, usize)>, index: usize) -> Vec<&'a str> {
+fn build_path<'a>(p: &[(&'a str, usize)], index: usize) -> Vec<&'a str> {
     let mut path: Vec<&str> = Vec::new();
     let mut index = index;
     loop {

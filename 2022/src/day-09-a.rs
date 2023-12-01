@@ -76,7 +76,7 @@ fn main() {
     for line in input {
         let command = line.split(' ').collect::<Vec<&str>>();
         for _i in 0..command[1].parse::<usize>().unwrap() {
-            match command[0] {
+            match *command.first().unwrap() {
                 "R" => move_right(&mut map, &mut head_x, &mut head_y, &mut tail_x, &mut tail_y),
                 "L" => move_left(&mut map, &mut head_x, &mut head_y, &mut tail_x, &mut tail_y),
                 "U" => move_up(&mut map, &mut head_x, &mut head_y, &mut tail_x, &mut tail_y),

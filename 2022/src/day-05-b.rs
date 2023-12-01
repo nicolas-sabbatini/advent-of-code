@@ -34,10 +34,10 @@ fn parse_crates(stacks_input: &[String]) -> Vec<Vec<char>> {
 
 fn parse_command(command: &str) -> (usize, usize, usize) {
     // move 5 from 4 to 5
-    let commamd = command.split(' ').collect::<Vec<&str>>();
-    let a = commamd[1].parse::<usize>().unwrap();
-    let b = commamd[3].parse::<usize>().unwrap();
-    let c = commamd[5].parse::<usize>().unwrap();
+    let command = command.split(' ').collect::<Vec<&str>>();
+    let a = command[1].parse::<usize>().unwrap();
+    let b = command[3].parse::<usize>().unwrap();
+    let c = command[5].parse::<usize>().unwrap();
     (a, b, c)
 }
 

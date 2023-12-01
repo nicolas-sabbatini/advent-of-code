@@ -17,7 +17,7 @@ fn main() {
         let calories = line.parse::<usize>().unwrap();
         elf_calories[last_elf] += calories;
     }
-    elf_calories.sort();
+    elf_calories.sort_unstable();
     let top_three_sum = elf_calories.iter().rev().take(3).sum::<usize>();
-    println!("{:?}", top_three_sum);
+    println!("{top_three_sum:?}");
 }

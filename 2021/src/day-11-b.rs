@@ -1,3 +1,4 @@
+#![allow(clippy::cast_possible_wrap, clippy::cast_sign_loss)]
 use helpers::load_input;
 
 mod helpers;
@@ -77,7 +78,7 @@ fn main() {
             }
         }
         if all_flashed >= amount_octo {
-            println!("{}", step);
+            println!("{step}");
             break;
         }
     }

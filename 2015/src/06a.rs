@@ -8,7 +8,7 @@ fn from_x_y(x: usize, y: usize) -> usize {
     x + (y * GRID_COLS)
 }
 
-fn turn(grid: &mut [bool; GRID_SIZE], x1: usize, y1: usize, x2: usize, y2: usize, state: bool) {
+fn turn(grid: &mut Box<[bool]>, x1: usize, y1: usize, x2: usize, y2: usize, state: bool) {
     for x in x1..=x2 {
         for y in y1..=y2 {
             let index = from_x_y(x, y);
@@ -17,7 +17,7 @@ fn turn(grid: &mut [bool; GRID_SIZE], x1: usize, y1: usize, x2: usize, y2: usize
     }
 }
 
-fn toggle(grid: &mut [bool; GRID_SIZE], x1: usize, y1: usize, x2: usize, y2: usize) {
+fn toggle(grid: &mut Box<[bool]>, x1: usize, y1: usize, x2: usize, y2: usize) {
     for x in x1..=x2 {
         for y in y1..=y2 {
             let index = from_x_y(x, y);
@@ -39,7 +39,7 @@ fn parse_cords(words: &mut std::str::SplitWhitespace) -> (usize, usize, usize, u
 fn main() {
     // Load input
     let input = load_input();
-    let mut grid = [false; GRID_SIZE];
+    let mut grid = vec![false; GRID_SIZE].into_boxed_slice();
 
     for line in input {
         let mut words = line.split_whitespace();
@@ -57,7 +57,7 @@ fn main() {
             }
             "toggle" => {
                 let (x1, y1, x2, y2) = parse_cords(&mut words);
-                toggle(&mut grid, x1, y1, x2, y2)
+                toggle(&mut grid, x1, y1, x2, y2);
             }
             _ => panic!("Invalid command"),
         }

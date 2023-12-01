@@ -1,3 +1,4 @@
+#![allow(clippy::cast_possible_wrap, clippy::cast_possible_truncation)]
 use input_loader::load_input;
 
 const OFFSET: u32 = 97;
@@ -17,7 +18,7 @@ fn create_new_password(mut old: Vec<u32>) -> Vec<u32> {
     }
 
     if !illegal_chars_pos.is_empty() {
-        illegal_chars_pos.sort();
+        illegal_chars_pos.sort_unstable();
         old[illegal_chars_pos[0]] += 1;
         for j in old.iter_mut().skip(illegal_chars_pos[0] + 1) {
             *j = 0;
@@ -44,7 +45,7 @@ fn create_new_password(mut old: Vec<u32>) -> Vec<u32> {
 }
 
 fn is_valid(password: &[u32]) -> bool {
-    for c in password.iter() {
+    for c in password {
         if ILLEGAL_CHARS.contains(c) {
             return false;
         }

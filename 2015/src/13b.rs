@@ -78,7 +78,7 @@ fn main() {
         let line = line.split_whitespace().collect::<Vec<&str>>();
         let node_name_1 = line[0].to_string();
         let node_name_2 = line[10].to_string();
-        let distance = match line[2] {
+        let distance = match *line.get(2).unwrap() {
             "gain" => line[3].parse::<isize>().unwrap(),
             "lose" => -line[3].parse::<isize>().unwrap(),
             _ => panic!("Unknown input"),

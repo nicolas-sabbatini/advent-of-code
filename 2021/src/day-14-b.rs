@@ -38,7 +38,7 @@ fn main() {
     for _step in 0..40 {
         let mut modifications: Vec<((char, char), u64)> = Vec::new();
         // Calculate new polymer
-        for (targets, output) in rules.iter() {
+        for (targets, output) in &rules {
             if let Some(v) = polymer.get(targets) {
                 modifications.push(((targets.0, *output), *v));
                 modifications.push(((*output, targets.1), *v));
@@ -46,7 +46,7 @@ fn main() {
         }
         // generate new polymer
         polymer.drain();
-        for (k, v) in modifications.iter() {
+        for (k, v) in &modifications {
             match polymer.get_mut(k) {
                 None => {
                     polymer.insert(*k, *v);
@@ -78,7 +78,7 @@ fn main() {
             vec.push((*v / 2) + (*v % 2));
             vec
         });
-    appearances.sort();
+    appearances.sort_unstable();
     let last = appearances.len() - 1;
     println!("{:?}", appearances[last] - appearances[0]);
 }

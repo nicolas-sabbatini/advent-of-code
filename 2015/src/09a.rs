@@ -1,3 +1,4 @@
+#![allow(clippy::cast_sign_loss)]
 use input_loader::load_input;
 
 #[derive(Debug)]

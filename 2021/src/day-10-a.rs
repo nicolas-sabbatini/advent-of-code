@@ -1,4 +1,4 @@
-#![allow(clippy::cast_possible_wrap)]
+#![allow(clippy::cast_possible_wrap, clippy::cast_sign_loss)]
 use core::panic;
 use helpers::load_input;
 
@@ -29,7 +29,7 @@ fn main() {
             }
         }
     }
-    println!("{}", res);
+    println!("{res}");
 }
 
 fn check_char(c: char, target: char) -> usize {

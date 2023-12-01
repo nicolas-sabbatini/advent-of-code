@@ -21,45 +21,45 @@ impl From<&str> for Outcome {
 }
 
 #[derive(Debug, PartialEq, Clone, Copy)]
-enum RPS {
+enum Rps {
     Rock = 1,
     Paper = 2,
     Scissors = 3,
 }
 
-impl From<&str> for RPS {
+impl From<&str> for Rps {
     fn from(ch: &str) -> Self {
         match ch {
-            "A" => RPS::Rock,
-            "B" => RPS::Paper,
-            "C" => RPS::Scissors,
+            "A" => Rps::Rock,
+            "B" => Rps::Paper,
+            "C" => Rps::Scissors,
             _ => panic!("unknown symbol"),
         }
     }
 }
 
-impl RPS {
-    fn get_defeated_symbol(&self) -> RPS {
+impl Rps {
+    fn get_defeated_symbol(self) -> Rps {
         match self {
-            RPS::Rock => RPS::Scissors,
-            RPS::Paper => RPS::Rock,
-            RPS::Scissors => RPS::Paper,
+            Rps::Rock => Rps::Scissors,
+            Rps::Paper => Rps::Rock,
+            Rps::Scissors => Rps::Paper,
         }
     }
 
-    fn get_winner_symbol(&self) -> RPS {
+    fn get_winner_symbol(self) -> Rps {
         match self {
-            RPS::Scissors => RPS::Rock,
-            RPS::Rock => RPS::Paper,
-            RPS::Paper => RPS::Scissors,
+            Rps::Scissors => Rps::Rock,
+            Rps::Rock => Rps::Paper,
+            Rps::Paper => Rps::Scissors,
         }
     }
 }
 
-fn select_desired_play(opponent_play: &RPS, desire_outcome: &Outcome) -> RPS {
+fn select_desired_play(opponent_play: Rps, desire_outcome: &Outcome) -> Rps {
     match desire_outcome {
         Outcome::Lost => opponent_play.get_defeated_symbol(),
-        Outcome::Draw => *opponent_play,
+        Outcome::Draw => opponent_play,
         Outcome::Won => opponent_play.get_winner_symbol(),
     }
 }
@@ -70,10 +70,10 @@ fn main() {
     let mut score: usize = 0;
     for lines in input {
         let mut selection = lines.split(' ');
-        let opponent_play = RPS::from(selection.next().unwrap());
+        let opponent_play = Rps::from(selection.next().unwrap());
         let desire_outcome = Outcome::from(selection.next().unwrap());
-        let my_play = select_desired_play(&opponent_play, &desire_outcome);
+        let my_play = select_desired_play(opponent_play, &desire_outcome);
         score = score + my_play as usize + desire_outcome as usize;
     }
-    println!("{:?}", score);
+    println!("{score:?}");
 }

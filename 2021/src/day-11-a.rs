@@ -1,3 +1,4 @@
+#![allow(clippy::cast_possible_wrap, clippy::cast_sign_loss)]
 use helpers::load_input;
 
 mod helpers;
@@ -74,5 +75,5 @@ fn main() {
             }
         }
     }
-    println!("{:?}", flashes)
+    println!("{flashes:?}");
 }

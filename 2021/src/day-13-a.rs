@@ -16,10 +16,10 @@ fn main() {
     let mut max_x = 0;
     let mut max_y = 0;
     // Parse input
-    for line in input.iter() {
+    for line in &input {
         // Parse folds
         if line.len() > 11 {
-            let mut line = line.split(" ").last().unwrap().split("=");
+            let mut line = line.split(' ').last().unwrap().split('=');
 
             let axis = line.next().unwrap();
             let row = line.next().unwrap().parse::<usize>().unwrap();
@@ -30,8 +30,8 @@ fn main() {
                 _ => panic!("Panic!"),
             }
         // Parse dots
-        } else if line.len() > 0 {
-            let mut line = line.split(",");
+        } else if !line.is_empty() {
+            let mut line = line.split(',');
             let x = line.next().unwrap().parse::<usize>().unwrap();
             let y = line.next().unwrap().parse::<usize>().unwrap();
             paper_builder.push((x, y));
@@ -41,22 +41,21 @@ fn main() {
     }
     // Build paper
     let mut paper: Vec<Vec<bool>> = vec![vec![false; max_x + 1]; max_y + 1];
-    for cords in paper_builder.iter() {
+    for cords in &paper_builder {
         paper[cords.1][cords.0] = true;
     }
 
     // Fold paper
-    for f in folds {
+    if let Some(f) = folds.into_iter().next() {
         match f {
             (Axis::X, col) => {
                 for x_offset in 0..(paper[0].len() - col) {
-                    for y in 0..paper.len() {
+                    for row in &mut paper {
                         if x_offset > col {
                             break;
                         }
-                        paper[y][col - x_offset] =
-                            paper[y][col - x_offset] || paper[y][col + x_offset];
-                        paper[y][col + x_offset] = false;
+                        row[col - x_offset] = row[col - x_offset] || row[col + x_offset];
+                        row[col + x_offset] = false;
                     }
                 }
             }
@@ -73,7 +72,6 @@ fn main() {
                 }
             }
         }
-        break;
     }
     // Count dots
     let dots = paper.iter().fold(0, |sum, line| {
@@ -81,5 +79,5 @@ fn main() {
             .iter()
             .fold(0, |sum, dot| if *dot { sum + 1 } else { sum })
     });
-    println!("{}", dots);
+    println!("{dots}");
 }

@@ -5,7 +5,7 @@ mod helpers;
 const UPPERCASE_OFFSET: usize = 38;
 const LOWERCASE_OFFSET: usize = 96;
 
-fn find_match_objet(a_compartment: Vec<char>, b_compartment: Vec<char>) -> Vec<char> {
+fn find_match_objet(a_compartment: &[char], b_compartment: &[char]) -> Vec<char> {
     let mut a_i = 0;
     let mut b_i = 0;
     let mut matching_objets: Vec<char> = Vec::new();
@@ -23,11 +23,11 @@ fn find_match_objet(a_compartment: Vec<char>, b_compartment: Vec<char>) -> Vec<c
     matching_objets
 }
 
-fn objet_to_priority(objet: &char) -> usize {
-    if *objet < 'a' {
-        return *objet as usize - UPPERCASE_OFFSET;
+fn objet_to_priority(objet: char) -> usize {
+    if objet < 'a' {
+        return objet as usize - UPPERCASE_OFFSET;
     }
-    *objet as usize - LOWERCASE_OFFSET
+    objet as usize - LOWERCASE_OFFSET
 }
 
 fn main() {
@@ -40,15 +40,18 @@ fn main() {
         let mut first_rucksacks: Vec<char> = lines.next().unwrap().chars().collect();
         let mut second_rucksacks: Vec<char> = lines.next().unwrap().chars().collect();
         let mut third_rucksacks: Vec<char> = lines.next().unwrap().chars().collect();
-        first_rucksacks.sort();
-        second_rucksacks.sort();
-        third_rucksacks.sort();
-        let matching_objets = find_match_objet(first_rucksacks, second_rucksacks);
-        let matching_objets = find_match_objet(matching_objets, third_rucksacks);
-        let priority = matching_objets.iter().map(objet_to_priority).sum::<usize>();
-        println!("{:?}", priority);
+        first_rucksacks.sort_unstable();
+        second_rucksacks.sort_unstable();
+        third_rucksacks.sort_unstable();
+        let matching_objets = find_match_objet(&first_rucksacks, &second_rucksacks);
+        let matching_objets = find_match_objet(&matching_objets, &third_rucksacks);
+        let priority = matching_objets
+            .iter()
+            .map(|c| objet_to_priority(*c))
+            .sum::<usize>();
+        println!("{priority:?}");
         res += priority;
         i += 3;
     }
-    println!("{:?}", res);
+    println!("{res:?}");
 }
