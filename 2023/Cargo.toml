@@ -1,0 +1,19 @@
+[package]
+name = "advent-of-code-2023"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+input_loader = { path = "../input_loader" }
+
+[[bin]]
+name = "2023-base"
+path = "src/base.rs"
+
+[[bin]]
+name = "2023-01a"
+path = "src/day-01-a.rs"
+
+[[bin]]
+name = "2023-01b"
+path = "src/day-01-b.rs"

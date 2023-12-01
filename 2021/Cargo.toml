@@ -3,8 +3,6 @@ name = "advent-of-code-2021"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
-
 [[bin]]
 name = "base"
 path = "src/base.rs"
