@@ -20,7 +20,7 @@ fn main() {
     for i in 0..size {
         let mut zero = 0;
         let mut one = 0;
-        for input in input_buffer.iter() {
+        for input in &input_buffer {
             match input.chars().nth(i).unwrap() {
                 '0' => zero += 1,
                 '1' => one += 1,

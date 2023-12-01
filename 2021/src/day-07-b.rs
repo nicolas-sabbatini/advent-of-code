@@ -12,17 +12,17 @@ fn main() {
         crab_positions.push(num);
     }
     // Sort crabs
-    crab_positions.sort();
+    crab_positions.sort_unstable();
     // Calculate the min cost;
     let mut res = isize::MAX;
     for i in crab_positions[0]..crab_positions[crab_positions.len() - 1] {
         let mut cost = 0;
-        for crab_pos in crab_positions.iter() {
+        for crab_pos in &crab_positions {
             // Use Gauss
             let steps = (crab_pos - i).abs();
             cost += (steps * (steps + 1)) / 2;
         }
         res = if cost < res { cost } else { res }
     }
-    println!("{}", res);
+    println!("{res}");
 }

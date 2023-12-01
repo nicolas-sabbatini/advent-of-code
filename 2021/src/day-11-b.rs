@@ -8,7 +8,7 @@ fn main() {
     // Set the octopus
     let mut octopus: Vec<Vec<u8>> = Vec::new();
     let mut flash_already: Vec<Vec<bool>> = Vec::new();
-    for line in input.iter() {
+    for line in &input {
         octopus.push(Vec::new());
         flash_already.push(Vec::new());
         let row = octopus.len() - 1;

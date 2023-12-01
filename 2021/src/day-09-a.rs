@@ -7,7 +7,7 @@ fn main() {
     let input = load_input();
     // Parce input
     let mut map: Vec<Vec<u8>> = Vec::new();
-    for line in input.iter() {
+    for line in &input {
         map.push(Vec::new());
         let pos = map.len() - 1;
         for height in line.chars() {
@@ -30,5 +30,5 @@ fn main() {
     }
 
     let risk_sum: usize = low_points.iter().fold(0, |res, v| res + *v as usize + 1);
-    println!("{}", risk_sum);
+    println!("{risk_sum}");
 }

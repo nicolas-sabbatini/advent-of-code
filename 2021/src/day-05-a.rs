@@ -9,7 +9,7 @@ fn main() {
     // Create map
     let mut map: HashMap<(usize, usize), usize> = HashMap::new();
     // Generate list of coordinates
-    for line in input.iter() {
+    for line in &input {
         let mut coordinates = line.split(" -> ");
         let mut coor1 = coordinates.next().unwrap().split(',');
         let mut coor2 = coordinates.next().unwrap().split(',');
@@ -22,7 +22,7 @@ fn main() {
             coor2.next().unwrap().parse::<usize>().unwrap(),
         );
         if pair1.0 == pair2.0 || pair1.1 == pair2.1 {
-            for point in draw_line(pair1, pair2).iter() {
+            for point in &draw_line(pair1, pair2) {
                 match map.get_mut(point) {
                     Some(point) => *point += 1,
                     None => {
@@ -33,19 +33,19 @@ fn main() {
         }
     }
 
-    let res = map.iter().filter(|x| *x.1 > 1).count() as usize;
+    let res = map.iter().filter(|x| *x.1 > 1).count();
 
-    println!("{}", res);
+    println!("{res}");
 }
 
 fn draw_line(start: (usize, usize), end: (usize, usize)) -> Vec<(usize, usize)> {
     let mut line = vec![start];
     let mut trace = start;
     while trace.0 != end.0 || trace.1 != end.1 {
-        trace.0 += (trace.0 < end.0) as usize;
-        trace.0 -= (trace.0 > end.0) as usize;
-        trace.1 += (trace.1 < end.1) as usize;
-        trace.1 -= (trace.1 > end.1) as usize;
+        trace.0 += usize::from(trace.0 < end.0);
+        trace.0 -= usize::from(trace.0 > end.0);
+        trace.1 += usize::from(trace.1 < end.1);
+        trace.1 -= usize::from(trace.1 > end.1);
         line.push(trace);
     }
     line

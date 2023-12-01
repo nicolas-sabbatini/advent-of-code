@@ -22,8 +22,8 @@ fn main() {
         prev_char = c;
     }
     // Parse rules
-    for i in 2..input.len() {
-        let mut rule = input[i].split(" -> ");
+    for rule in input.iter().skip(2) {
+        let mut rule = rule.split(" -> ");
         let mut left = rule.next().unwrap().chars();
         let target1 = left.next().unwrap();
         let target2 = left.next().unwrap();

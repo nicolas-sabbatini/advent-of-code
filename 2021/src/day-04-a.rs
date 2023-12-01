@@ -11,8 +11,8 @@ fn main() {
     let mut indexs: HashMap<usize, Vec<(usize, usize, usize)>> = HashMap::new();
     // Iterate over input
     for line in &input[1..] {
-        if let "" = line.as_str() {
-            cards.push(Vec::new())
+        if line.as_str().is_empty() {
+            cards.push(Vec::new());
         } else {
             // Get the current card
             let card_index = cards.len() - 1;
@@ -56,7 +56,7 @@ fn main() {
             // If do not exist do nothing
             None => (),
             Some(pos) => {
-                for (card_index, row_index, num_index) in pos.iter() {
+                for (card_index, row_index, num_index) in pos {
                     cards[*card_index][*row_index][*num_index].0 = true;
                     if check_card(&cards[*card_index]) {
                         println!("{}", calculate_card_point(&cards[*card_index], num));
@@ -73,9 +73,9 @@ fn check_card(card: &[Vec<(bool, usize)>]) -> bool {
     let rows = card.len();
     let cols = card[0].len();
     // Check rows
-    for row in card.iter() {
+    for row in card {
         let mut sum = 0;
-        for (mark, _) in row.iter() {
+        for (mark, _) in row {
             // If it was marked
             if *mark {
                 sum += 1;
@@ -113,7 +113,7 @@ fn calculate_card_point(card: &[Vec<(bool, usize)>], last_num: usize) -> usize {
     for row in card {
         points += row.iter().fold(
             0,
-            |prev, (mark, value)| if !mark { *value + prev } else { prev },
+            |prev, (mark, value)| if *mark { prev } else { *value + prev },
         );
     }
     points * last_num

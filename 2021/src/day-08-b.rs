@@ -8,7 +8,7 @@ fn main() {
     let input = load_input();
     let mut signals = Vec::new();
     // Parce input
-    for line in input.iter() {
+    for line in &input {
         let mut input = line.split(" | ");
         let unique_patterns = input.next().unwrap().split(' ').collect::<Vec<&str>>();
         let ouput = input.next().unwrap().split(' ').collect::<Vec<&str>>();
@@ -67,12 +67,12 @@ fn main() {
     */
     let mut value = 0;
     // Decode each signal
-    for signal in signals.iter() {
+    for signal in &signals {
         let mut wires_aperance: HashMap<char, usize> = HashMap::new();
         let mut is_four: Vec<char> = Vec::new();
         let mut decoded_wires: HashMap<char, u8> = HashMap::new();
         // Count the appearances of the wires
-        for wires in signal.0.iter() {
+        for wires in &signal.0 {
             for wire in wires.chars() {
                 match wires_aperance.get_mut(&wire) {
                     None => {
@@ -84,25 +84,25 @@ fn main() {
             // If is wired to 4
             if wires.len() == 4 {
                 is_four = wires.chars().collect::<Vec<char>>();
-                is_four.sort();
+                is_four.sort_unstable();
             }
         }
         // Decode patterns
-        for (k, v) in wires_aperance.iter() {
+        for (k, v) in &wires_aperance {
             if *v == 8 && !is_four.contains(k) {
-                decoded_wires.insert(*k, 0b00000001);
+                decoded_wires.insert(*k, 0b0000_0001);
             } else if *v == 6 {
-                decoded_wires.insert(*k, 0b00000010);
+                decoded_wires.insert(*k, 0b0000_0010);
             } else if *v == 8 {
-                decoded_wires.insert(*k, 0b00000100);
+                decoded_wires.insert(*k, 0b0000_0100);
             } else if *v == 7 && is_four.contains(k) {
-                decoded_wires.insert(*k, 0b00001000);
+                decoded_wires.insert(*k, 0b0000_1000);
             } else if *v == 4 {
-                decoded_wires.insert(*k, 0b00010000);
+                decoded_wires.insert(*k, 0b0001_0000);
             } else if *v == 9 {
-                decoded_wires.insert(*k, 0b00100000);
+                decoded_wires.insert(*k, 0b0010_0000);
             } else if *v == 7 {
-                decoded_wires.insert(*k, 0b01000000);
+                decoded_wires.insert(*k, 0b0100_0000);
             }
         }
         // Decode 4 digit code
@@ -117,27 +117,27 @@ fn main() {
                 }
             }
             // decode and offset number
-            num += mask_to_num(mask) * usize::pow(10, offset as u32);
+            num += mask_to_num(mask) * usize::pow(10, u32::try_from(offset).unwrap());
         }
         // add decoded number to result
         value += num;
     }
     // print result
-    println!("{}", value);
+    println!("{value}");
 }
 
 fn mask_to_num(target: u8) -> usize {
     match target {
-        0b01110111 => 0,
-        0b00100100 => 1,
-        0b01011101 => 2,
-        0b01101101 => 3,
-        0b00101110 => 4,
-        0b01101011 => 5,
-        0b01111011 => 6,
-        0b00100101 => 7,
-        0b01111111 => 8,
-        0b01101111 => 9,
+        0b0111_0111 => 0,
+        0b0010_0100 => 1,
+        0b0101_1101 => 2,
+        0b0110_1101 => 3,
+        0b0010_1110 => 4,
+        0b0110_1011 => 5,
+        0b0111_1011 => 6,
+        0b0010_0101 => 7,
+        0b0111_1111 => 8,
+        0b0110_1111 => 9,
         _ => panic!("Error!"),
     }
 }

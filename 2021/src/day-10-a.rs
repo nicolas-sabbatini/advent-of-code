@@ -1,3 +1,4 @@
+#![allow(clippy::cast_possible_wrap)]
 use core::panic;
 use helpers::load_input;
 
@@ -7,7 +8,7 @@ fn main() {
     // Load input
     let input = load_input();
     let mut res = 0;
-    for line in input.iter() {
+    for line in &input {
         let mut chunk_open: Vec<char> = Vec::new();
         'line_chek: for chr in line.chars() {
             match chr {

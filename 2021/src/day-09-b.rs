@@ -8,7 +8,7 @@ fn main() {
     // Parce input
     let mut map: Vec<Vec<u8>> = Vec::new();
     let mut map_vis: Vec<Vec<bool>> = Vec::new();
-    for line in input.iter() {
+    for line in &input {
         map.push(Vec::new());
         map_vis.push(Vec::new());
         let pos = map.len() - 1;
@@ -43,7 +43,7 @@ fn main() {
     for basin in &basins_sizes[0..3] {
         res *= basin;
     }
-    println!("{}", res);
+    println!("{res}");
 }
 
 fn calculate_basins(x: isize, y: isize, map: &Vec<Vec<u8>>, map_vis: &mut Vec<Vec<bool>>) -> usize {

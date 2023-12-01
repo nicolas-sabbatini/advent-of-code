@@ -7,7 +7,7 @@ fn main() {
     let input = load_input();
     // Aperences of 1, 4, 7, 8
     let mut aperences = 0;
-    for line in input.iter() {
+    for line in &input {
         let mut check = false;
         for wires in line.split(' ') {
             match wires {
@@ -23,5 +23,5 @@ fn main() {
             }
         }
     }
-    println!("{}", aperences);
+    println!("{aperences}");
 }
