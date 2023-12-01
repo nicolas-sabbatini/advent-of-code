@@ -8,8 +8,8 @@ fn main() {
         let mut repeat_one_letter_before = false;
         let mut pair_repeat = false;
         let mut pairs = Vec::new();
-        let mut previous_char = String::from("");
-        let mut char_test = String::from("");
+        let mut previous_char = String::new();
+        let mut char_test = String::new();
         for char in string.chars() {
             if char.to_string() == char_test {
                 repeat_one_letter_before = true;

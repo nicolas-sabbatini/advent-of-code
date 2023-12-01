@@ -10,7 +10,7 @@ fn main() {
     'next_line: for string in input {
         let mut vowel_count = 0;
         let mut double_letter = false;
-        let mut last_char = String::from("");
+        let mut last_char = String::new();
         for char in string.chars() {
             if VOWELS.contains(&char.to_string().as_str()) {
                 vowel_count += 1;
@@ -18,7 +18,7 @@ fn main() {
             if char.to_string() == last_char {
                 double_letter = true;
             }
-            if FORBIDDEN_STRINGS.contains(&format!("{}{}", last_char, char).as_str()) {
+            if FORBIDDEN_STRINGS.contains(&format!("{last_char}{char}").as_str()) {
                 continue 'next_line;
             }
             last_char = char.clone().to_string();

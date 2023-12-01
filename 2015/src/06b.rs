@@ -8,7 +8,7 @@ fn from_x_y(x: usize, y: usize) -> usize {
     x + (y * GRID_COLS)
 }
 
-fn turn(grid: &mut [i32; GRID_SIZE], x1: usize, y1: usize, x2: usize, y2: usize, state: i32) {
+fn turn(grid: &mut Box<[i32]>, x1: usize, y1: usize, x2: usize, y2: usize, state: i32) {
     for x in x1..=x2 {
         for y in y1..=y2 {
             let index = from_x_y(x, y);
@@ -30,7 +30,7 @@ fn parse_cords(words: &mut std::str::SplitWhitespace) -> (usize, usize, usize, u
 fn main() {
     // Load input
     let input = load_input();
-    let mut grid = [0; GRID_SIZE];
+    let mut grid = vec![0; GRID_SIZE].into_boxed_slice();
 
     for line in input {
         let mut words = line.split_whitespace();

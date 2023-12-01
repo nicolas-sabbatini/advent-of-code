@@ -1,5 +1,8 @@
 use std::io::{self, BufRead};
 
+#[must_use]
+/// # Panics
+/// if input is not found
 pub fn load_input() -> Vec<String> {
     // Read input
     let input = io::stdin();

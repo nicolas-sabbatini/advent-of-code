@@ -42,7 +42,7 @@ fn main() {
             total_distance: 0,
         });
     }
-    for reindeer in olympics.iter_mut() {
+    for reindeer in &mut olympics {
         reindeer.step(2503);
     }
     let res = olympics

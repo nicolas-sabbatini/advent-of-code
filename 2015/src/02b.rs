@@ -10,7 +10,7 @@ fn main() {
         let w = lwh[1].parse::<usize>().unwrap();
         let h = lwh[2].parse::<usize>().unwrap();
         let mut sides = [l, w, h];
-        sides.sort();
+        sides.sort_unstable();
         total += sides[0] * 2 + sides[1] * 2;
         total += sides.iter().product::<usize>();
     }

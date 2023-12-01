@@ -73,7 +73,7 @@ fn main() {
             _ => panic!("Unknown operation"),
         };
         let last = parce_line.last().unwrap();
-        wires.insert(last.to_string(), operation);
+        wires.insert((*last).to_string(), operation);
     }
     let mut solved_wires: HashMap<Operation, u16> = HashMap::new();
     let res = wires.get("a").unwrap().calculate(&wires, &mut solved_wires);

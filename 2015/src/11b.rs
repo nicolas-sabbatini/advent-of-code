@@ -12,12 +12,12 @@ fn create_new_password(mut old: Vec<u32>) -> Vec<u32> {
     let mut illegal_chars_pos = Vec::new();
     for ilegal in &ILLEGAL_CHARS {
         if let Some(i) = old.iter().position(|&x| x == *ilegal) {
-            illegal_chars_pos.push(i)
+            illegal_chars_pos.push(i);
         }
     }
 
     if !illegal_chars_pos.is_empty() {
-        illegal_chars_pos.sort();
+        illegal_chars_pos.sort_unstable();
         old[illegal_chars_pos[0]] += 1;
         for j in old.iter_mut().skip(illegal_chars_pos[0] + 1) {
             *j = 0;

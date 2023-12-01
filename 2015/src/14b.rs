@@ -38,12 +38,12 @@ fn main() {
         });
     }
     for _ in 0..2503 {
-        for reindeer in olympics.iter_mut() {
+        for reindeer in &mut olympics {
             reindeer.step();
         }
         olympics.sort_by_key(|r| r.total_distance);
         let max_dist = olympics.last_mut().unwrap().total_distance;
-        for reindeer in olympics.iter_mut() {
+        for reindeer in &mut olympics {
             if reindeer.total_distance == max_dist {
                 reindeer.points += 1;
             }

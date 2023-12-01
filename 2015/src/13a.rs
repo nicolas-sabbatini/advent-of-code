@@ -94,5 +94,5 @@ fn main() {
         .map(|x| calculate_arrangement(x, &graph))
         .max()
         .unwrap();
-    println!("{:#?}", res);
+    println!("{res:#?}");
 }

@@ -10,7 +10,7 @@ fn main() {
         let w = lwh[1].parse::<usize>().unwrap();
         let h = lwh[2].parse::<usize>().unwrap();
         let mut sides = [l * w, w * h, h * l];
-        sides.sort();
+        sides.sort_unstable();
         total += sides[0] + sides.iter().sum::<usize>() * 2;
     }
     println!("{total}");
