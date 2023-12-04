@@ -17,7 +17,7 @@ fn main() {
             .replace("nine", "n9e");
         let mut numbers = Vec::new();
         for c in line.chars() {
-            if c.to_string().parse::<usize>().is_ok() {
+            if c.is_numeric() {
                 numbers.push(c);
             }
         }
