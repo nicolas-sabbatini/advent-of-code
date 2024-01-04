@@ -11,6 +11,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "advent-of-code-2016"
+version = "0.1.0"
+dependencies = [
+ "input_loader",
+]
+
+[[package]]
 name = "advent-of-code-2021"
 version = "0.1.0"
 
