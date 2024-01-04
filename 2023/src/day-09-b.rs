@@ -1,8 +1,8 @@
 #![allow(clippy::cast_possible_wrap)]
 use input_loader::load_input;
 
-fn predict_next_number(numbers: &Vec<isize>) -> isize {
-    let mut secuences = vec![numbers.clone()];
+fn predict_next_number(numbers: &[isize]) -> isize {
+    let mut secuences = vec![numbers.to_vec()];
     while secuences.last().unwrap().iter().any(|x| *x != 0) {
         let mut new_sequence = Vec::new();
         for sequence in secuences.last().unwrap().windows(2) {
@@ -19,7 +19,6 @@ fn predict_next_number(numbers: &Vec<isize>) -> isize {
 }
 
 fn main() {
-    // Load input
     let input = load_input();
     let mut readings = Vec::new();
     for line in input {
@@ -31,6 +30,9 @@ fn main() {
     }
     println!(
         "{}",
-        readings.iter().map(predict_next_number).sum::<isize>()
+        readings
+            .iter()
+            .map(|element| predict_next_number(element))
+            .sum::<isize>()
     );
 }
