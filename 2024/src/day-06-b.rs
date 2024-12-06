@@ -36,12 +36,6 @@ impl Dir {
     }
 }
 
-enum Action<T> {
-    Outside,
-    Next(T),
-    Wall,
-}
-
 fn find_start(map: &[Vec<char>]) -> (isize, isize) {
     for (y, row) in map.iter().enumerate() {
         for (x, cel) in row.iter().enumerate() {
@@ -58,23 +52,19 @@ fn find_next(
     current_dir: Dir,
     cx: isize,
     cy: isize,
-    ret_wall: bool,
-) -> Action<(isize, isize, Dir)> {
+) -> Option<(isize, isize, Dir)> {
     let mut current_dir = current_dir;
     loop {
         let (xdt, ydt) = current_dir.get_dir();
         let new_x = cx + xdt;
         let new_y = cy + ydt;
         if new_x < 0 || new_x >= map[0].len() as isize || new_y < 0 || new_y >= map.len() as isize {
-            return Action::Outside;
+            return None;
         }
         if map[new_y as usize][new_x as usize] == '#' {
-            if ret_wall {
-                return Action::Wall;
-            }
             current_dir = current_dir.rotate();
         } else {
-            return Action::Next((new_x, new_y, current_dir));
+            return Some((new_x, new_y, current_dir));
         }
     }
 }
@@ -82,8 +72,7 @@ fn find_next(
 fn phantom_walk(map: &[Vec<char>], (sx, sy, sdir): (isize, isize, Dir)) -> usize {
     let mut new_walk = vec![vec![Dir::Unknown; map[0].len()]; map.len()];
     let (mut cx, mut cy, mut cdir) = (sx, sy, sdir);
-    while let Action::Next((new_cx, new_cy, new_current_dir)) = find_next(map, cdir, cx, cy, false)
-    {
+    while let Some((new_cx, new_cy, new_current_dir)) = find_next(map, cdir, cx, cy) {
         cx = new_cx;
         cy = new_cy;
         cdir = new_current_dir;
@@ -103,7 +92,7 @@ fn walk(map: &[Vec<char>]) -> usize {
     let mut ncx: isize = cx;
     let mut ncy: isize = cy;
     let mut ndir = Dir::Up;
-    while let Action::Next((new_cx, new_cy, new_dir)) = find_next(map, ndir, ncx, ncy, false) {
+    while let Some((new_cx, new_cy, new_dir)) = find_next(map, ndir, ncx, ncy) {
         ncx = new_cx;
         ncy = new_cy;
         ndir = new_dir;
