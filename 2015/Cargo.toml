@@ -9,108 +9,108 @@ md5 = "0.7.0"
 
 [[bin]]
 name = "2015-01a"
-path = "src/01a.rs"
+path = "01a.rs"
 
 [[bin]]
 name = "2015-01b"
-path = "src/01b.rs"
+path = "01b.rs"
 
 [[bin]]
 name = "2015-02a"
-path = "src/02a.rs"
+path = "02a.rs"
 
 [[bin]]
 name = "2015-02b"
-path = "src/02b.rs"
+path = "02b.rs"
 
 [[bin]]
 name = "2015-03a"
-path = "src/03a.rs"
+path = "03a.rs"
 
 [[bin]]
 name = "2015-03b"
-path = "src/03b.rs"
+path = "03b.rs"
 
 [[bin]]
 name = "2015-04a"
-path = "src/04a.rs"
+path = "04a.rs"
 
 [[bin]]
 name = "2015-04b"
-path = "src/04b.rs"
+path = "04b.rs"
 
 [[bin]]
 name = "2015-05a"
-path = "src/05a.rs"
+path = "05a.rs"
 
 [[bin]]
 name = "2015-05b"
-path = "src/05b.rs"
+path = "05b.rs"
 
 [[bin]]
 name = "2015-06a"
-path = "src/06a.rs"
+path = "06a.rs"
 
 [[bin]]
 name = "2015-06b"
-path = "src/06b.rs"
+path = "06b.rs"
 
 [[bin]]
 name = "2015-07a"
-path = "src/07a.rs"
+path = "07a.rs"
 
 [[bin]]
 name = "2015-07b"
-path = "src/07b.rs"
+path = "07b.rs"
 
 [[bin]]
 name = "2015-08a"
-path = "src/08a.rs"
+path = "08a.rs"
 
 [[bin]]
 name = "2015-08b"
-path = "src/08b.rs"
+path = "08b.rs"
 
 [[bin]]
 name = "2015-09a"
-path = "src/09a.rs"
+path = "09a.rs"
 
 [[bin]]
 name = "2015-09b"
-path = "src/09b.rs"
+path = "09b.rs"
 
 [[bin]]
 name = "2015-10a"
-path = "src/10a.rs"
+path = "10a.rs"
 
 [[bin]]
 name = "2015-10b"
-path = "src/10b.rs"
+path = "10b.rs"
 
 [[bin]]
 name = "2015-11a"
-path = "src/11a.rs"
+path = "11a.rs"
 
 [[bin]]
 name = "2015-11b"
-path = "src/11b.rs"
+path = "11b.rs"
 
 [[bin]]
 name = "2015-12a"
-path = "src/12a.rs"
+path = "12a.rs"
 
 [[bin]]
 name = "2015-13a"
-path = "src/13a.rs"
+path = "13a.rs"
 
 [[bin]]
 name = "2015-13b"
-path = "src/13b.rs"
+path = "13b.rs"
 
 [[bin]]
 name = "2015-14a"
-path = "src/14a.rs"
+path = "14a.rs"
 
 [[bin]]
 name = "2015-14b"
-path = "src/14b.rs"
+path = "14b.rs"

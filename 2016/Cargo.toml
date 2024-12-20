@@ -8,28 +8,28 @@ input_loader = { path = "../input_loader" }
 
 [[bin]]
 name = "2016-base"
-path = "src/base.rs"
+path = "base.rs"
 
 [[bin]]
 name = "2016-01a"
-path = "src/day-01-a.rs"
+path = "day-01-a.rs"
 
 [[bin]]
 name = "2016-01b"
-path = "src/day-01-b.rs"
+path = "day-01-b.rs"
 
 [[bin]]
 name = "2016-02a"
-path = "src/day-02-a.rs"
+path = "day-02-a.rs"
 
 [[bin]]
 name = "2016-02b"
-path = "src/day-02-b.rs"
+path = "day-02-b.rs"
 
 [[bin]]
 name = "2016-03a"
-path = "src/day-03-a.rs"
+path = "day-03-a.rs"
 
 [[bin]]
 name = "2016-03b"
-path = "src/day-03-b.rs"
+path = "day-03-b.rs"
