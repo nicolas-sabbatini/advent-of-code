@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-input_loader = { path = "../input_loader" }
+input_loader = { path = "../libs/rust/input_loader" }
 md5 = "0.7.0"
 
 [[bin]]
