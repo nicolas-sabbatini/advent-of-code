@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "test_a": "deno run -A part_a.ts test.txt",
+    "exe_a": "deno run -A part_a.ts input.txt",
+    "test_b": "deno run -A part_b.ts test.txt",
+    "exe_b": "deno run -A part_b.ts input.txt"
+  },
+  "imports": {
+  }
+}

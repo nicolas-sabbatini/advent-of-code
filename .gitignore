@@ -4,3 +4,4 @@ input.txt
 bin
 objects
 .vim
+deno.lock
