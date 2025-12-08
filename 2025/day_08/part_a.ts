@@ -15,7 +15,7 @@ const distance = (
   const x = Math.pow(x1 - x2, 2);
   const y = Math.pow(y1 - y2, 2);
   const z = Math.pow(z1 - z2, 2);
-  return Math.sqrt(x + y + z);
+  return x + y + z;
 };
 
 const distances = [];
