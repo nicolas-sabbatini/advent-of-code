@@ -37,6 +37,7 @@ const bunding_box: Rectangle[] = file.reduce((acc, _, i) => {
   return acc;
 }, [] as Rectangle[]);
 
+// Si comparto un borde no lo considero como colisión
 const aabb_collision = (a: Rectangle, b: Rectangle) => {
   const left_gap = a.left >= b.right;
   const right_gap = a.right <= b.left;
@@ -57,6 +58,7 @@ areas.sort((a, b) => b[0] - a[0]);
 for (const area of areas) {
   let inside = true;
   for (let i = 0; i < bunding_box.length && inside; i++) {
+    // Si mi caja se mantiene sin pasar de los bordes sigue siendo váida
     inside = inside && !aabb_collision(area[1], bunding_box[i]);
   }
   if (inside) {
